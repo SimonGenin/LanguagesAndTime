@@ -17,15 +17,14 @@ class LanguageDParsers extends BachTParsers
         }
 
     primitive =
-    {
-        "tell(" ~ token ~ ")" ^^
-            { case _ ~ vtoken ~ _ => primitiveExpression("tell", vtoken) } | "ask(" ~ token ~ ")" ^^
-            { case _ ~ vtoken ~ _ => primitiveExpression("ask", vtoken) } | "get(" ~ token ~ ")" ^^
-            { case _ ~ vtoken ~ _ => primitiveExpression("get", vtoken) } | "nask(" ~ token ~ ")" ^^
-            { case _ ~ vtoken ~ _ => primitiveExpression("nask", vtoken) } | "delay(" ~ time ~ ")" ^^
-            { case _ ~ vtime ~ _ => delayExpression(vtime.toInt) }
-    }
-
+        {
+            "tell(" ~ token ~ ")" ^^
+                { case _ ~ vtoken ~ _ ⇒ primitiveExpression("tell", vtoken) } | "ask(" ~ token ~ ")" ^^
+                { case _ ~ vtoken ~ _ ⇒ primitiveExpression("ask", vtoken) } | "get(" ~ token ~ ")" ^^
+                { case _ ~ vtoken ~ _ ⇒ primitiveExpression("get", vtoken) } | "nask(" ~ token ~ ")" ^^
+                { case _ ~ vtoken ~ _ ⇒ primitiveExpression("nask", vtoken) } | "delay(" ~ time ~ ")" ^^
+                { case _ ~ vtime ~ _ ⇒ delayExpression(vtime.toInt) }
+        }
 
 }
 
@@ -34,14 +33,14 @@ object LanguageDSimulationParser extends LanguageDParsers
 
     def parse_primitive(prim: String): Expr = parseAll(primitive, prim) match
     {
-        case Success(result, _) => result
-        case failure: NoSuccess => scala.sys.error(failure.msg)
+        case Success(result, _) ⇒ result
+        case failure: NoSuccess ⇒ scala.sys.error(failure.msg)
     }
 
     def parse_agent(ag: String): Expr = parseAll(agent, ag) match
     {
-        case Success(result, _) => result
-        case failure: NoSuccess => scala.sys.error(failure.msg)
+        case Success(result, _) ⇒ result
+        case failure: NoSuccess ⇒ scala.sys.error(failure.msg)
     }
 
 }

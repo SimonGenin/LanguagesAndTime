@@ -9,7 +9,7 @@ package language_D
 
 import language_Bacht._
 
-import language.postfixOps
+import scala.language.postfixOps
 
 class LanguageDSimulator extends BachTSimul(bb)
 {
@@ -134,17 +134,14 @@ class LanguageDSimulator extends BachTSimul(bb)
         {
             encounteredFailure = executeOneExpression(currentExpression) match
             {
-                case (false, delayExpression(time)) =>
-                    println("We are delayed - time: " + time)
+                case (false, delayExpression(time)) => println("We are delayed - time: " + time)
                     println("Current expression checked : " + currentExpression)
                     currentExpression = applyDelayIfNecessary(currentExpression)
                     println("New expression coming : " + currentExpression)
                     false
-                case (false, _) =>
-                    println("Current expression failed : " + currentExpression)
+                case (false, _) => println("Current expression failed : " + currentExpression)
                     true
-                case (true, new_expression) =>
-                    println("Current expression checked : " + currentExpression)
+                case (true, new_expression) => println("Current expression checked : " + currentExpression)
                     currentExpression = new_expression
                     println("New expression coming : " + currentExpression)
                     false

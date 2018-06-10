@@ -8,20 +8,18 @@ package language_Bacht
    AUTHOR : J.-M. Jacquet and D. Darquennes
    DATE   : March 2016
 
-----------------------------------------------------------------------------*/
-
-object BachtSim extends BachTSimul(bb)
+----------------------------------------------------------------------------*/ object BachtSim extends BachTSimul(bb)
 {
+
+    def eval(agent: String)
+    {
+        apply(agent)
+    }
 
     def apply(agent: String)
     {
         val agent_parsed = BachTSimulParser.parse_agent(agent)
         BachtSim.executeExpressions(agent_parsed)
-    }
-
-    def eval(agent: String)
-    {
-        apply(agent)
     }
 
     def run(agent: String)

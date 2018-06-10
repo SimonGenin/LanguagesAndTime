@@ -10,8 +10,8 @@ package language_Bacht
 
 ----------------------------------------------------------------------------*/
 
+import scala.language.postfixOps
 import scala.util.Random
-import language.postfixOps
 
 class BachTSimul(var bb: BachTStore)
 {
@@ -107,11 +107,9 @@ class BachTSimul(var bb: BachTStore)
         {
             failure = executeOneExpression(c_agent) match
             {
-                case (false, _) =>
-                    println("Current agent failed : " + c_agent)
+                case (false, _) => println("Current agent failed : " + c_agent)
                     true
-                case (true, new_agent) =>
-                    println("Current agent checked : " + c_agent)
+                case (true, new_agent) => println("Current agent checked : " + c_agent)
                     c_agent = new_agent
                     println("Next agent coming : " + new_agent)
                     false

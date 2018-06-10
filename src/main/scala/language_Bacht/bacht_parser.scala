@@ -10,22 +10,13 @@ package language_Bacht
 ----------------------------------------------------------------------------*/
 
 import scala.util.parsing.combinator._
-import scala.util.matching.Regex
 
 class BachTParsers extends RegexParsers
 {
 
-    def token: Parser[String] = "[a-z][0-9a-zA-Z_]*".r ^^
-        {
-            _.toString
-        }
-
-
     val opChoice: Parser[String] = "+"
     val opPara: Parser[String] = "||"
     val opSeq: Parser[String] = ";"
-
-
     protected
     var primitive: Parser[Expr] =
     {
@@ -35,6 +26,11 @@ class BachTParsers extends RegexParsers
             { case _ ~ vtoken ~ _ => primitiveExpression("get", vtoken) } | "nask(" ~ token ~ ")" ^^
             { case _ ~ vtoken ~ _ => primitiveExpression("nask", vtoken) }
     }
+
+    def token: Parser[String] = "[a-z][0-9a-zA-Z_]*".r ^^
+        {
+            _.toString
+        }
 
     def agent: Parser[Expr] = compositionChoice
 

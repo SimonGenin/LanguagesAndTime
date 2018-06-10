@@ -8,9 +8,10 @@ package language_Bacht
    AUTHOR : J.-M. Jacquet and D. Darquennes
    DATE   : March 2016
 
-----------------------------------------------------------------------------*/
+----------------------------------------------------------------------------*/ class Expr
 
-class Expr
 case class emptyExpression() extends Expr
+
 case class primitiveExpression(primitive: String, token: String) extends Expr
+
 case class composedExpression(operator: String, leftExpression: Expr, rightExpression: Expr) extends Expr
