@@ -105,7 +105,6 @@ class ItemLeaf(token: Any) extends DSL
     def toScript: String =
     {
         toString
-
     }
 
 }

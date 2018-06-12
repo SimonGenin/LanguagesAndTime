@@ -6,7 +6,8 @@ package language_D
   * Nous y ajoutons la possibilité de parser un "delay" dans les primitives
   */
 
-import language_Bacht.{BachTParsers, Expr, primitiveExpression}
+import language_Bacht.{BachTParsers, primitiveExpression}
+import libs.Expr
 
 class LanguageDParsers extends BachTParsers
 {
@@ -28,7 +29,7 @@ class LanguageDParsers extends BachTParsers
 
 }
 
-object LanguageDSimulationParser extends LanguageDParsers
+object LanguageDParsers extends LanguageDParsers
 {
 
     def parse_primitive(prim: String): Expr = parseAll(primitive, prim) match

@@ -10,14 +10,6 @@ package language_D
 
 import language_Bacht.BachTStore
 
-class LanguageDStore extends BachTStore
+class DStore extends BachTStore
 
-object bb extends BachTStore
-{
 
-    def reset()
-    {
-        clear_store()
-    }
-
-}
